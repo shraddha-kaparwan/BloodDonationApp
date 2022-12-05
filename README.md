@@ -1,8 +1,6 @@
 # BloodDonationApp
-- An app to list blood donors and users who need blood. Users can then request blood when required.
+- User can authenticate using email/password
 
-- User can list as both donor and receiver
+- User can list blood donations
 
-- User can see blood donors
-
-- User can add blood donation information
+- User can list blood requests
