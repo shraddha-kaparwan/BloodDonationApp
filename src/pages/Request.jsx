@@ -153,10 +153,23 @@ const Request = () => {
     setForm(userRequest);
   };
 
-  const deleteDocument = () => {
-    deleteUserRequest(userRequest.id);
-    // TODO: After deleting, how do we rerender the component
-    // because we want to see empty profile form
+  const clearRequest = () => {
+    setUserRequest(null);
+  };
+
+  const deleteDocument = async () => {
+    try {
+      setLoading(true);
+      await deleteUserRequest(userRequest.id);
+      clearRequest();
+      setError("");
+      // setForm(emptyForm);
+      setLoading(false);
+    } catch (err) {
+      console.log(err);
+      setError(err.message);
+      setLoading(false);
+    }
   };
 
   // 1. press on "edit"

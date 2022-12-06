@@ -18,6 +18,7 @@ const Listing = () => {
     userProfile,
     editUserProfile,
     deleteUserProfile,
+    clearProfile
   } = useProfile();
   const { user, userLoading } = useAuth();
   const navigate = useNavigate();
@@ -86,8 +87,19 @@ const Listing = () => {
     setForm(userProfile);
   };
 
-  const deleteDocument = () => {
-    deleteUserProfile(userProfile.id);
+  const deleteDocument = async () => {
+    try {
+      setLoading(true);
+      await deleteUserProfile(userProfile.id);
+      clearProfile();
+      setError("");
+      // setForm(emptyForm);
+      setLoading(false);
+    } catch (err) {
+      console.log(err);
+      setError(err.message);
+      setLoading(false);
+    }
   };
 
   if (loading || userLoading) return <div>loading...</div>;
