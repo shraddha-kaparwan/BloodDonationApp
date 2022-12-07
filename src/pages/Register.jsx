@@ -33,7 +33,7 @@ const Register = () => {
     <div  className="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
       <section className="mt-10">
       <a href="/">
-        <h1 className="text-2xl text-gray-700">Back</h1>
+        <h1 className="text-2xl text-red-700">Back</h1>
       </a>
       <form onSubmit={onSubmit}>
       <section>
