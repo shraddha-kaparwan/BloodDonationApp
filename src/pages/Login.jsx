@@ -30,33 +30,50 @@ const Login = () => {
   if (loading) return <div>loading...</div>;
 
   return (
-    <>
-      <Link to='/'>Back</Link>
-      <form onSubmit={onSubmit}>
-        <h1>Login</h1>
+    <div className="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
+      <section className="mt-10">
+      <a href="/">
+        <h1 className="text-2xl text-gray-700">Back</h1>
+      </a>
+      
+      <form className="flex flex-col" onSubmit={onSubmit}>
+      <section>
+        <p className="text-2xl text-gray-600 pt-2 text-center">Sign in to your account.</p>
+        <br></br>
+      </section>
         {error && <p style={{ color: "red" }}>{error}</p>}
-        <label>Email</label>
+        <div className="mb-6 pt-3 rounded bg-gray-200">
+        <label className="block text-gray-700 text-sm font-bold mb-2 ml-3">Email</label>
         <input
+          class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-red-600 transition duration-500 px-3 pb-3"
           type='text'
           value={email}
           onChange={(e) => {
             setEmail(e.target.value);
           }}
         />
-        <label>Password</label>
+        </div>
+        <div className="mb-6 pt-3 rounded bg-gray-200">
+        <label className="block text-gray-700 text-sm font-bold mb-2 ml-3">Password</label>
         <input
+          class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-red-600 transition duration-500 px-3 pb-3"
           type='password'
           value={password}
           onChange={(e) => {
             setPassword(e.target.value);
           }}
         />
-        <input type='submit' value='SUBMIT' />
+        </div>
+        <input className="w-full fill-current bg-gray-600 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200 text-center" type='submit' value='SUBMIT' />
       </form>
-      <p>
-        New to our website? <Link to='/register'>Signup</Link>
+      </section>
+      <br></br>
+      <p text-2xl text-gray-600 pt-2>
+        <a href="/register">
+        New to our website? <h1 className="text-gray-700">Signup</h1>
+        </a>
       </p>
-    </>
+    </div>
   );
 };
 

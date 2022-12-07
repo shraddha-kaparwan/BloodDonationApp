@@ -111,20 +111,34 @@ const Profile = () => {
 
   if (userProfile && !editor)
     return (
-      <div>
-        <Link to='/'>Back</Link>
-        <h1>{user.email}</h1>
-        <p>Name: {userProfile.name}</p>
-        <p>Age: {userProfile.age}</p>
-        <p>Blood Group: {userProfile.bloodGroup}</p>
-        <button onClick={openEditor}>Edit</button>
-        <button onClick={deleteDocument}>Delete</button>
+      <div  className="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
+        <a href="/">
+          <h1 className="text-2xl text-red-700">Back</h1>
+        </a>
+        <br></br>
+        <h1 className="text-2xl text-gray-700">{user.email}</h1>
+        <p className="text-2xl text-gray-700">Name: {userProfile.name}</p>
+        <p className="text-2xl text-gray-700">Age: {userProfile.age}</p>
+        <p className="text-2xl text-gray-700">Blood Group: {userProfile.bloodGroup}</p>
+        <section className="mt-10">
+        <form className="flex flex-col">
+          <div className="flex mb-6 pt-3 rounded">
+            <button className="w-full fill-current bg-green-600 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200 text-center"  onClick={openEditor}>EDIT</button>
+          </div>
+          <div className="flex mb-6 pt-3 rounded">
+            <button className="w-full fill-current bg-gray-600 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200 text-center" onClick={deleteDocument}>DELETE</button>
+          </div>
+        </form>  
+      </section> 
+        
       </div>
     );
 
   return (
-    <>
-      <Link to='/'>Back</Link>
+    <div className="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
+      <a href="/">
+        <h1 className="text-2xl text-gray-700">Back</h1>
+      </a>
       <form
         onSubmit={onSubmit}
         style={{
@@ -134,10 +148,14 @@ const Profile = () => {
           gap: "12px",
         }}
       >
-        <h1>Profile</h1>
+      <section>
+        <p className="text-2xl text-gray-600 pt-2 text-center">PROFILE</p>
+        <br></br>
+      </section>
         {error && <p style={{ color: "red" }}>{error}</p>}
-        <label>Name</label>
+        <label  className="block text-gray-700 text-sm font-bold mb-2 ml-3">Name</label>
         <input
+          class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-red-600 transition duration-500 px-3 pb-3"
           required
           type='text'
           value={form.name}
@@ -148,10 +166,10 @@ const Profile = () => {
             });
           }}
         />
-        <label>Age</label>
+        <label  className="block text-gray-700 text-sm font-bold mb-2 ml-3">Age</label>
         <input
+          class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-red-600 transition duration-500 px-3 pb-3"
           required
-          type='number'
           value={form.age}
           onChange={(e) => {
             setForm({
@@ -160,8 +178,9 @@ const Profile = () => {
             });
           }}
         />
-        <label>Blood Group</label>
+        <label  className="block text-gray-700 text-sm font-bold mb-2 ml-3">Blood Group</label>
         <select
+          class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-red-600 transition duration-500 px-3 pb-3"
           required
           onChange={(e) =>
             setForm({
@@ -182,12 +201,12 @@ const Profile = () => {
           <option value='AB-'>AB Negative</option>
         </select>
         {!editor ? (
-          <input type='submit' value='SUBMIT' />
+          <input  className="w-full fill-current bg-gray-600 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200 text-center" type='submit' value='SUBMIT' />
         ) : (
-          <input type='submit' value='EDIT' />
+          <input  className="w-full fill-current bg-gray-600 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200 text-center" type='submit' value='EDIT' />
         )}
       </form>
-    </>
+    </div>
   );
 };
 

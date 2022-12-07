@@ -185,22 +185,36 @@ const Request = () => {
 
   if (userRequest && !editor)
     return (
-      <div>
-        <Link to='/'>Back</Link>
-        <h1>{user.email}</h1>
-        <p>Name: {userRequest.name}</p>
-        <p>City: {userRequest.city}</p>
-        <p>Blood Group: {userRequest.bloodGroup}</p>
-        <p>Recieve Date: {userRequest.recieveDate}</p>
-        <p>Reason: {userRequest.reason}</p>
-        <button onClick={openEditor}>Edit</button>
-        <button onClick={deleteDocument}>Delete</button>
+      <div className="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
+        <a href="/">
+          <h1 className="text-2xl text-red-700">Back</h1>
+        </a>
+        <br></br>
+        <h1  className="text-2xl text-gray-700">{user.email}</h1>
+        <p  className="text-2xl text-gray-700">Name: {userRequest.name}</p>
+        <p  className="text-2xl text-gray-700">City: {userRequest.city}</p>
+        <p  className="text-2xl text-gray-700">Blood Group: {userRequest.bloodGroup}</p>
+        <p  className="text-2xl text-gray-700">Recieve Date: {userRequest.recieveDate}</p>
+        <p  className="text-2xl text-gray-700">Reason: {userRequest.reason}</p>
+        <section className="mt-10">
+        <form className="flex flex-col">
+          <div className="flex mb-6 pt-3 rounded">
+            <button className="w-full fill-current bg-green-600 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200 text-center"  onClick={openEditor}>EDIT</button>
+          </div>
+          <div className="flex mb-6 pt-3 rounded">
+            <button className="w-full fill-current bg-gray-600 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200 text-center" onClick={deleteDocument}>DELETE</button>
+          </div>
+        </form>  
+      </section> 
       </div>
     );
 
   return (
-    <>
-      <Link to='/profile'>Profile</Link>
+    <div className="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
+      <a href="/profile">
+          <h1 className="text-2xl text-red-700">Profile</h1>
+        </a>
+        <br></br>
       <form
         onSubmit={onSubmit}
         style={{
@@ -210,10 +224,11 @@ const Request = () => {
           gap: "12px",
         }}
       >
-        <h1>Blood Request</h1>
+        <h1  className="text-2xl text-gray-700">Blood Request</h1>
         {error && <p style={{ color: "red" }}>{error}</p>}
-        <label>Name</label>
+        <label className="block text-gray-700 text-sm font-bold mb-2 ml-3">Name</label>
         <input
+          class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-red-600 transition duration-500 px-3 pb-3"
           type='text'
           value={form.name}
           onChange={(e) => {
@@ -223,8 +238,9 @@ const Request = () => {
             });
           }}
         />
-        <label>City</label>
+        <label className="block text-gray-700 text-sm font-bold mb-2 ml-3">City</label>
         <select
+          class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-red-600 transition duration-500 px-3 pb-3"
           onChange={(e) =>
             setForm({
               ...form,
@@ -242,8 +258,9 @@ const Request = () => {
           <option value='calgary'>Calgary</option>
           <option value='saskatoon'>Saskatoon</option>
         </select>
-        <label>Recieve Date</label>
+        <label className="block text-gray-700 text-sm font-bold mb-2 ml-3">Recieve Date</label>
         <input
+          class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-red-600 transition duration-500 px-3 pb-3"
           type='date'
           value={form.recieveDate}
           onChange={(e) => {
@@ -253,8 +270,9 @@ const Request = () => {
             });
           }}
         />
-        <label>Blood Group</label>
+        <label className="block text-gray-700 text-sm font-bold mb-2 ml-3">Blood Group</label>
         <select
+          class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-red-600 transition duration-500 px-3 pb-3"
           required
           onChange={(e) =>
             setForm({
@@ -275,8 +293,9 @@ const Request = () => {
           <option value='AB-'>AB Negative</option>
         </select>
         
-        <label>Reason</label>
+        <label className="block text-gray-700 text-sm font-bold mb-2 ml-3">Reason</label>
         <textarea
+          class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-red-600 transition duration-500 px-3 pb-3"
           value={form.reason}
           onChange={(e) => {
             setForm({
@@ -288,12 +307,12 @@ const Request = () => {
         
         
         {!editor ? (
-          <input type='submit' value='SUBMIT' />
+          <input className="w-full fill-current bg-gray-600 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200 text-center" type='submit' value='SUBMIT' />
         ) : (
-          <input type='submit' value='EDIT' />
+          <input className="w-full fill-current bg-gray-600 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200 text-center" type='submit' value='EDIT' />
         )}
       </form>
-    </>
+    </div>
   );
 };
 
